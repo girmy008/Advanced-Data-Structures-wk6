@@ -142,16 +142,35 @@ public class Node<T extends Comparable<T>> {
 	public int insertItem(T item){
 		//
 		// CONTINUOUS ASSESSMENT TASK - Implement This Function
-		// PUT YOUR UNISA USERID HERE: 
+		// PUT YOUR UNISA USERID HERE: 110443588
 		//
 		
+		if (this.findItem(item) != null) {
+			return -1;
+		} 
+		
 		// go through the items stored to identify where to insert the item.
+		
+		int i;
+		for (i = 0; i < this.numItems && this.itemArray[i].compareTo(item) < 0; i++) {
+		}
+		
 		// shift the existing items right as needed.
+		
+		for (int j = this.numItems - 1; j >= i; j--) {
+			this.itemArray[j + 1] = this.itemArray[j];
+		}
+		
+		this.itemArray[i] = item;
+	
 		// no need to update childArray as insert happens only on leaf node.
 		// increase the number of items.
-
+		
+		this.numItems += 1;
+		
 		// return the index of the inserted node
-		return -1; // You may change/delete this line as needed.
+		
+		return i;
 	}
 
 
@@ -164,7 +183,7 @@ public class Node<T extends Comparable<T>> {
 	public Node<T> getNextNode(T value){
 		// 
 		// CONTINUOUS ASSESSMENT TASK - Implement This Function
-		// PUT YOUR UNISA USERID HERE: 
+		// PUT YOUR UNISA USERID HERE: 110443588
 		//
 		int i;
 		// check the item array to find the child which needs to be traversed next.
