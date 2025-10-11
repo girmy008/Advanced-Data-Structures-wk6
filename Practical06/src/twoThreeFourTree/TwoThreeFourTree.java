@@ -32,19 +32,37 @@ public class TwoThreeFourTree<T extends Comparable<T>> {
 	 * @return false if item already exists, true if successfully inserted.
 	 */
 	public boolean insert(T item){
-		// 
-		// CONTINUOUS ASSESSMENT TASK - Implement This Function
-		// PUT YOUR UNISA USERID HERE:
-		//
+	    // 
+	    // CONTINUOUS ASSESSMENT TASK - Implement This Function
+	    // PUT YOUR UNISA USERID HERE:110443588
+	    //
 
-		// starting from the root, traverse the tree down to the leaf node.
-		// if a full node is encountered, split before continue traversing.
-		// after split, be careful of which node to traverse next.
-		// if a leaf node is reached, stop traversing.
-		// insert the item to the found leaf node.
+	    // starting from the root, traverse the tree down to the leaf node.
+	    Node<T> current = this.root;
 
-		// return true if successfully inserted, false if already exists.
-		return false; // You may change/delete this line as needed.
+	    while (!current.isLeaf()) {
+	        // if a full node is encountered, split before continue traversing.
+	        if (current.isFull()) {
+	            split(current); // split the full node
+	            // after split, be careful of which node to traverse next.
+	            current = current.getParent().getNextNode(item);
+	        } else {
+	            current = current.getNextNode(item);
+	        }
+	    }
+
+	    // If leaf node is full, split before insertion
+	    if (current.isFull()) {
+	        split(current);
+	        current = current.getParent().getNextNode(item);
+	    }
+
+	    // insert the item to the found leaf node.
+	    if (current.insertItem(item) == -1) {
+	        return false;
+	    } else {
+	        return true;
+	    }
 	}
 
 
