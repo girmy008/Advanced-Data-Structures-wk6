@@ -166,11 +166,12 @@ public class Node<T extends Comparable<T>> {
 		// CONTINUOUS ASSESSMENT TASK - Implement This Function
 		// PUT YOUR UNISA USERID HERE: 
 		//
-		
+		int i;
 		// check the item array to find the child which needs to be traversed next.
-		
+		for (i =0; i<this.numItems && this.itemArray[i] != null && this.itemArray[i].compareTo(value) < 0; i++) {
+		}
 		// return the next child node to traverse.
-		return null; // You may change/delete this line as needed.
+		return this.getChild(i); // You may change/delete this line as needed.
 	}
 
 
